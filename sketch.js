@@ -117,7 +117,7 @@ function draw() {
   let time = (frameMin*4)+(frameSec+33);
   
   if (frameCount >= time) {
-    h = hour()%12;
+    preload();
     setup(); 
     frameCount = 0;
   }
@@ -139,6 +139,7 @@ function draw() {
         y.pop(u); 
       }
     }
+    preload();
     setup(); 
     frameCount = 0;
   }  
@@ -156,7 +157,7 @@ function orizontal() {
 
 function keyPressed() {
   clear();
-  h = hour()%12;
+  preload();
   setup();
 }
 
