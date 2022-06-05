@@ -61,11 +61,16 @@ function setup() {
   frameRate(fr);
   rectMode(CENTER);
   
+  
   min = minute();
   count = round(min/10);
   dst = dist[count];
   counter = round(random(0, 3));
+  console.log(baseUrlPictures + pictureList[h]);
+    
   
+
+
 //------------------------------------------------palette 
   img.resize(200, 0);
   img.loadPixels();
@@ -105,6 +110,7 @@ function setup() {
     X[i] = random(x);
     Y[i] = random(y);
   }
+  console.log(h, dst, count, fr, counter); 
 }
 function draw() { 
   let frameSec = fr;
