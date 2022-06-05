@@ -1,18 +1,7 @@
-h2{
-  color: #101010
-}
-h2{
-  position: absolute;
-  right: 50%
-}
-h2{
-  position: absolute;
-  top: 50%
-}
-
 html, body {
   margin: 0;
   padding: 0;
 }
-canvahdisplay: block;
+canvas {
+  display: block;
 }
