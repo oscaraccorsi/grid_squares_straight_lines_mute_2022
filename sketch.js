@@ -9,9 +9,9 @@ let Y = [];
 let count = 1;
 let choice = [orizontal, vertical];
 let chosen;
-let fr = 3;
 
-
+let fr;
+let frArray = [1, 2, 3, 5, 8, 13, 21, 34];
 
 let inc=20;
 //let dist=20;
@@ -33,7 +33,7 @@ let pictureList = ['schneider.jpg',
                    'schneider10.png'];
 
 let marginX, marginY;
-let dist = [15, 20, 25, 30, 40, 50];
+let dist = [15, 20, 35, 55, 90, 145];
  
 let dst;
 let frCnt;
@@ -57,19 +57,15 @@ function setup() {
   
   createCanvas(windowWidth, windowHeight);
   background(10); 
+  fr = random(frArray);
   frameRate(fr);
   rectMode(CENTER);
-  
   
   min = minute();
   count = round(min/10);
   dst = dist[count];
+  counter = round(random(0, 3));
   
-  
-  console.log(h, dst);   
-  
-
-
 //------------------------------------------------palette 
   img.resize(200, 0);
   img.loadPixels();
@@ -109,17 +105,15 @@ function setup() {
     X[i] = random(x);
     Y[i] = random(y);
   }
-  
 }
 function draw() { 
   let frameSec = fr;
   let frameMin = fr*60;
-  let time = (frameMin*4)+(frameSec+33);
+  let time = (frameMin*counter)+(frameSec+33);
   
   if (frameCount >= time) {
-    preload();
-    setup(); 
-    frameCount = 0;
+    reloadPage();
+    frameCount = 0;  
   }
   
   stroke(random(palette));
@@ -131,19 +125,8 @@ function draw() {
   if (count == x.length) {
     count = 1;
   }
-  
-  if (frameCount >= time) {
-    for (let i = marginX; i < width-marginX; i += (width-marginX*2)/coeffX) {
-      for (let u = marginY; u < height-marginY; u += (height-marginY*2)/coeffY) {
-        x.pop(i);
-        y.pop(u); 
-      }
-    }
-    preload();
-    setup(); 
-    frameCount = 0;
-  }  
 }
+
 function chosenPattern() {
   let choose = random(choice);
   choose();
@@ -155,10 +138,8 @@ function orizontal() {
   line(X[count-1], Y[count-1], X[count], Y[count-1]);
 }
 
-function keyPressed() {
-  clear();
-  preload();
-  setup();
+function reloadPage() {
+   window.location.reload();
 }
 
 function mousePressed() {
